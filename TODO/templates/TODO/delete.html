@@ -1,0 +1,6 @@
+<p>Jesteś pewien że chcesz usunąć zadanie:  "{{ task }}"?</p>
+
+<form method='post' action = "">
+    {% csrf_token %}
+    <input type="submit" name="delete" value="Usuń">
+</form>

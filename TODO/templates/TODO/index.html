@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css-1.5.5.min.css"/>
+    </head>
+    <body>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.tittle }}
+    <input type="submit" name="Task" value="Dodaj">
+    </form>
+    <h3> Lista Zadań </h3>
+    <p>Zadania na dzisiaj</p>
+    {% for task in tasks %}
+    <div>
+        <a href="{% url 'task' task.id %}"> Uaktualnij </a>
+        <a href="{% url 'delete' task.id %}"> Usuń </a>
+        {% if task.complete == True %}
+        <s> {{ task }} </s>
+        {% else %}
+        <span> {{ task }}</span>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+   </body>
+</html>
